@@ -23,9 +23,14 @@
 
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
+		
+		
 		<property name="hbm2ddl.auto">create</property>
 
 		<mapping class="chap01.crud.Member" />
+		<mapping class="chap04.BoardArticle" />
+		<mapping class="chap04.Comments" />
+		
 	</session-factory>
 
 </hibernate-configuration>

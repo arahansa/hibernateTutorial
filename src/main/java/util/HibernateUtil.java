@@ -7,14 +7,14 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 
 /**
- * @author Deepak Kumar * Web: http://www.roseindia.net Updated by
+ * @author Deepak Kumar * Web: http://www.roseindia.net 
  *  Update by arahansa@naver.com
  */
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	private static String configFile = "hibernate.cfg.xml";
-
-	static {
+	
+	static{
 		try {
 			Configuration cfg = new Configuration().configure(configFile);
 			StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
@@ -26,7 +26,8 @@ public class HibernateUtil {
 			throw new ExceptionInInitializerError(th);
 		}
 	}
-
+	
+	
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
