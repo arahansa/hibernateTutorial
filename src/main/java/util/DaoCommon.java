@@ -5,20 +5,59 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import util.HibernateUtil;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 
 public class DaoCommon<T> {
-	private static final int numPerPage = 10;
+	
+	private static  int numPerPage = 10;
 	private SessionFactory factory;
 	private Class clazz;
 	private String boardName;
+	
+	
 	
 	public DaoCommon(Class<?> clazz) {
 		factory = HibernateTestUtil.getSessionFactory(clazz);
 		this.clazz = clazz;
 		this.boardName = clazz.getSimpleName();
 	}
+	
+	public int deleteAllSetTable() {
+		Session session = factory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		int result = session.createQuery("delete from " + boardName).executeUpdate();
+		tx.commit();
+		return result;
+	}
+	
+	
+	
+	public long count() {
+		Session session = factory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		long result = (Long) session.createCriteria(clazz).setProjection(Projections.rowCount()).uniqueResult();
+		tx.commit();
+		return result;
+	}
+	
+	
+	
+	public List<?> getPagingList(int requestPage){
+		Session session = factory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		Query query = (Query) session.createQuery("from "+boardName +" order by id asc");
+
+		query.setFirstResult((requestPage-1)*numPerPage); 
+		query.setMaxResults(numPerPage); 
+		
+		List<?> members = query.list();
+		tx.commit();
+		return members;
+	}
+	
+	
+	
 	
 	public List<?> selectList() {
 		Session session = factory.getCurrentSession();
