@@ -37,10 +37,7 @@ public class FileReader_CVS {
 				list.add(boardArticle);
 			}
 		}
-		
-		
 		br.close();
 		return list;
-	}
-	
+	}	
 }

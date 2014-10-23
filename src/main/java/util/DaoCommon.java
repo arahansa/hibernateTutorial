@@ -10,7 +10,7 @@ import org.hibernate.criterion.Projections;
 
 public class DaoCommon<T> {
 	
-	private static  int numPerPage = 10;
+	
 	private SessionFactory factory;
 	private Class clazz;
 	private String boardName;
@@ -42,6 +42,7 @@ public class DaoCommon<T> {
 	}
 	
 	
+	private static  int numPerPage = 10;
 	
 	public List<?> getPagingList(int requestPage){
 		Session session = factory.getCurrentSession();
