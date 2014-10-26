@@ -27,10 +27,7 @@
 		
 		<property name="hbm2ddl.auto">create</property>
 
-		
-		
 		<mapping class="chap05.paging.BoardArticle" />
-		
 	</session-factory>
 
 </hibernate-configuration>

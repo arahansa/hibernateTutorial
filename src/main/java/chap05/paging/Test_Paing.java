@@ -12,47 +12,40 @@ import org.junit.Test;
 
 import util.DaoCommon;
 
-public class PagingTest {
+/**
+ * í˜ì´ì§•ì˜ í•µì‹¬ì€ ì´ê²ƒì´ë‹¤. 
+ * 
+ * query.setFirstResult((requestPage-1)*numPerPage); 
+ * query.setMaxResults(numPerPage); 
+ * @author arahansa
+ *
+ */
+public class Test_Paing {
 
-	@Before
-	public void setUp() throws Exception {
+	private DaoCommon<BoardArticle> daoBoard = new DaoCommon<BoardArticle>(BoardArticle.class);
 
-	
-	
-	}
-	DaoCommon<BoardArticle> daoBoard = new DaoCommon<BoardArticle>(BoardArticle.class);
 	
 	@Test
 	public void testName() throws Exception {
 		daoBoard.insert(new BoardArticle("arahansa", "hello Count", new Date()));
 		assertEquals(1, daoBoard.count());
-		
 		daoBoard.deleteAllSetTable();
 		assertEquals(0, daoBoard.count());
 	}
 
-	
 	public void test() throws NumberFormatException, IOException, ParseException {
-		
-		
 		List<BoardArticle> list = FileReader_CVS.getArticles();
-		for (BoardArticle boardArticle : list) {
+		for (BoardArticle boardArticle : list) 
 			daoBoard.insert(boardArticle);
-		}
 		
 		List<BoardArticle> pagingList1 = (List<BoardArticle>) daoBoard.getPagingList(1);
-		System.out.println("Ã¹¹øÂ° ÆäÀÌÁö");
-		for (BoardArticle boardArticle : pagingList1) {
+		System.out.println("1 Page Load ");
+		for (BoardArticle boardArticle : pagingList1)
 			System.out.println(boardArticle);
-		}
 		
 		List<BoardArticle> pagingList2 = (List<BoardArticle>) daoBoard.getPagingList(2);
-		System.out.println("µÎ¹øÂ° ÆäÀÌÁö");
-		for (BoardArticle boardArticle : pagingList2) {
+		System.out.println("2 Page Load ");
+		for (BoardArticle boardArticle : pagingList2) 
 			System.out.println(boardArticle);
-		}
-		
-		
 	}
-
 }

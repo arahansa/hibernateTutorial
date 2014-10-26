@@ -29,7 +29,6 @@ public class HibernateTestUtil {
 				throw new ExceptionInInitializerError(th);
 			}
 		}
-		
 		return sessionFactory;
 	}
 

@@ -5,8 +5,13 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.junit.Test;
-
-public class MemberTest extends DaoMember {
+/**
+ * 간단히 CRUD 하는 테스트를 만들어보았다. 
+ * DaoMember 에 CRUD가 있다.참조.
+ * @author arahansa
+ *
+ */
+public class Test_Member extends DaoMember {
 
 	private static final String HELLO_HIBERNATE = "hello hibernate";
 	private static final String HELLO_WORLD = "hello world";

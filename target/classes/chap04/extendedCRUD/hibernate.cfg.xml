@@ -27,7 +27,10 @@
 		
 		<property name="hbm2ddl.auto">create</property>
 
-		<mapping class="chap05.paging.BoardArticle" />
+		
+		<mapping class="chap04.extendedCRUD.BoardArticle" />
+		<mapping class="chap04.extendedCRUD.Comments" />
+		
 	</session-factory>
 
 </hibernate-configuration>

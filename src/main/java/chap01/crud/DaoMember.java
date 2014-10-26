@@ -7,7 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import util.HibernateUtil;
-
+/**
+ *  Session session = factory.getCurrentSession();
+ *  session.beginTransaction();
+ *  //이 안에쿼리가 들어간다. 이것만 기억!
+ *  session.getTransaction().commit();
+ *  @author arahansa
+ */
 public class DaoMember {
 
 

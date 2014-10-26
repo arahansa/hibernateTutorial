@@ -10,12 +10,14 @@ import org.junit.Test;
 
 import util.DaoCommon;
 import util.HibernateTestUtil;
-
-public class HqlLearningTest {
-
-	@Before
-	public void setUp() throws Exception {
-	}
+/**
+ * 그냥 hql 문을 쓰는 방법도 있지만 sql인젝션의 방어를 위하여 이렇게 쓴다고 한다.
+ * hql 문안에 ? 를 넣고서 query.set타입(순번, 값);
+ * hql 문안에 :이름 넣고서 query.set타입("이름", 값);
+ * 
+ * @author arahansa
+ */
+public class Test_HqlLearning {
 
 	@Test
 	public void test() {
@@ -42,10 +44,9 @@ public class HqlLearningTest {
 		
 		List<UserDetail> list = query.list();
 		session.getTransaction().commit();
+		//람다사용해서 foreach 로 안의 내용확인
+		list.forEach(n->System.out.println(n));
 		
-		for (UserDetail userDetail : list) {
-			System.out.println(userDetail);
-		}	
 	}
 
 }

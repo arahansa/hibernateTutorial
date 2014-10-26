@@ -1,4 +1,4 @@
-package chap04;
+package chap04.extendedCRUD;
 
 import java.util.Date;
 
