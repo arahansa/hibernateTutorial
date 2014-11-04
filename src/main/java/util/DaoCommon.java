@@ -15,7 +15,10 @@ public class DaoCommon<T> {
 	private Class clazz;
 	private String boardName;
 	
-	
+	//Static Factory Method for Study
+	public static <T> DaoCommon<T> newInstance(Class<?> clazz){
+		return new DaoCommon<T>(clazz);
+	}
 	
 	public DaoCommon(Class<?> clazz) {
 		factory = HibernateTestUtil.getSessionFactory(clazz);

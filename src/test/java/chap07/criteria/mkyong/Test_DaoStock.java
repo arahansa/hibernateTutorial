@@ -47,7 +47,8 @@ public class Test_DaoStock {
 	
 	@BeforeClass
 	public static void before() throws ParseException{
-		daoSDR = new DaoCommon<StockDailyRecord>(StockDailyRecord.class);
+		//daoSDR = new DaoCommon<StockDailyRecord>(StockDailyRecord.class);
+		daoSDR = DaoCommon.newInstance(StockDailyRecord.class);
 		daoSDR.insert(new StockDailyRecord(new Date(), 1));
 		daoSDR.insert(new StockDailyRecord(sdf.parse("2012-01-01"), 2));
 		daoSDR.insert(new StockDailyRecord(sdf.parse("2013-01-01"), 10001));
